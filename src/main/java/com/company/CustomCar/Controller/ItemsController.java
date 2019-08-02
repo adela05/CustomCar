@@ -28,5 +28,17 @@ public class ItemsController {
         return itemsService.getItemById(id);
     }
 
-    
+    @RequestMapping(value = "/items/{id}", method = RequestMethod.PUT)
+    public void updateItem(@RequestBody @Valid Items item, Integer id){
+        itemsService.updateItem(item,id);
+    }
+
+    @RequestMapping(value = "/items/{id}", method = RequestMethod.DELETE)
+    public void deleteItem(@PathVariable Integer id){
+        itemsService.deleteItem(id);
+    }
+    @RequestMapping(value = "supplier/{name}")
+    public List<Items> getSupplierName(@PathVariable String name){
+        return itemsService.getSupplierName(name);
+    }
 }
