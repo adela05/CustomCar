@@ -14,12 +14,12 @@ public class Items {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer itemId;
     @NotEmpty
-    @Length(max = 15)
     private String partType;
+    private Integer supplierId;
 
     // Joining the Supplier class to set the name for each item.
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "supplierId")
+    @JoinColumn(name = "supplierId", updatable = false, insertable = false)
     private Supplier supplier;
 
     // Getter and Setter
@@ -45,5 +45,13 @@ public class Items {
 
     public void setSupplier(Supplier supplier) {
         this.supplier = supplier;
+    }
+
+    public Integer getSupplierId() {
+        return supplierId;
+    }
+
+    public void setSupplierId(Integer supplierId) {
+        this.supplierId = supplierId;
     }
 }

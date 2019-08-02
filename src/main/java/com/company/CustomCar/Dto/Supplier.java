@@ -17,7 +17,7 @@ public class Supplier {
     @Length(max=20)
     private String name;
     @NotEmpty
-    @Length(max = 20)
+    @Length(max = 30)
     private String email;
     @NotEmpty
     @Length(min=10, max = 15)

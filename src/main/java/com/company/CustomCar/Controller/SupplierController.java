@@ -27,7 +27,7 @@ public class SupplierController {
         return supplierService.getSupplierById(id);
     }
     @RequestMapping(value = "/suppliers/{id}", method = RequestMethod.DELETE)
-    public void deleteSupplier(Integer id){
+    public void deleteSupplier(@PathVariable Integer id){
         supplierService.deleteSupplier(id);
     }
 }
