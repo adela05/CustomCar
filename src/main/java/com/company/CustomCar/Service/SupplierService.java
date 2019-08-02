@@ -12,9 +12,10 @@ public class SupplierService {
     @Autowired
     private SupplierRepository supplierRepo;
 
-    public Supplier addSupplier(Supplier supplier){
-        supplierRepo.save(supplier);
-        return supplier;
+    public void updateSupplier(Supplier supplier, Integer id){
+        if(supplier.getSupplierId() == id){
+            supplierRepo.save(supplier);
+        }
     }
 
     public List<Supplier> getAllSuppliers(){

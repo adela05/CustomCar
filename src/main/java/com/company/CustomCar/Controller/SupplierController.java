@@ -14,9 +14,9 @@ public class SupplierController {
     @Autowired
     private SupplierService supplierService;
 
-    @RequestMapping(value = "/suppliers", method = RequestMethod.POST)
-    public Supplier addSupplier(@RequestBody @Valid Supplier supplier){
-        return supplierService.addSupplier(supplier);
+    @RequestMapping(value = "/suppliers/{id}", method = RequestMethod.PUT)
+    public void updateSupplier(@RequestBody Supplier supplier, @PathVariable Integer id){
+        supplierService.updateSupplier(supplier, id);
     }
     @RequestMapping(value = "/suppliers", method = RequestMethod.GET)
     public List<Supplier> getAllSuppliers(){
