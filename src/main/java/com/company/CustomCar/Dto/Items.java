@@ -5,6 +5,7 @@ import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -15,12 +16,12 @@ public class Items {
     private Integer itemId;
     @NotEmpty
     private String partType;
+    @NotNull
+    private Integer quantity;
+    @NotNull
+    private Double price;
     private Integer supplierId;
 
-    // Joining the Supplier class to set the name for each item.
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "supplierId", updatable = false, insertable = false)
-    private Supplier supplier;
 
     // Getter and Setter
     public Integer getItemId() {
@@ -39,12 +40,20 @@ public class Items {
         this.partType = partType;
     }
 
-    public Supplier getSupplier() {
-        return supplier;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 
     public Integer getSupplierId() {

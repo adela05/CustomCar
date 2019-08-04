@@ -31,7 +31,7 @@ public class ItemsService {
     public void deleteItem(Integer id){
         itemsRepo.deleteById(id);
     }
-    public List<Items> getSupplierName(String name){
-        return itemsRepo.findBySupplierName(name);
+    public List<Items> findByPartType(String name){
+        return itemsRepo.findAll();
     }
 }

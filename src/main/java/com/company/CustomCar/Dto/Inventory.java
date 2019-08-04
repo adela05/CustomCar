@@ -1,5 +1,6 @@
 package com.company.CustomCar.Dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.Length;
 
@@ -14,18 +15,15 @@ public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer inventoryId;
-    @NotNull
-    private Integer totalQty;
-    @NotNull
-    private Double price;
     @NotEmpty
-    @Length(max = 10)
+    @Length(max = 15)
     private String status;
+    private Integer itemId;
 
-    // Joining the Items class to add part type and supplier name.
+    // Joining Inventory to Orders Class.
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "itemId")
-    private Items items;
+    @JoinColumn(name = "orderId", updatable = false, insertable = false)
+
 
     // Getter and Setter
     public Integer getInventoryId() {
@@ -36,22 +34,6 @@ public class Inventory {
         this.inventoryId = inventoryId;
     }
 
-    public Integer getTotalQty() {
-        return totalQty;
-    }
-
-    public void setTotalQty(Integer totalQty) {
-        this.totalQty = totalQty;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -60,11 +42,11 @@ public class Inventory {
         this.status = status;
     }
 
-    public Items getItems() {
-        return items;
+    public Integer getItemId() {
+        return itemId;
     }
 
-    public void setItems(Items items) {
-        this.items = items;
+    public void setItems(Integer items) {
+        this.itemId = itemId;
     }
 }

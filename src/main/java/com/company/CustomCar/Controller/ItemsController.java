@@ -37,8 +37,8 @@ public class ItemsController {
     public void deleteItem(@PathVariable Integer id){
         itemsService.deleteItem(id);
     }
-    @RequestMapping(value = "supplier/{name}")
-    public List<Items> getSupplierName(@PathVariable String name){
-        return itemsService.getSupplierName(name);
+    @RequestMapping(value = "/items/{name}")
+    public List<Items> findByPartType(@PathVariable String name){
+        return itemsService.findByPartType(name);
     }
 }

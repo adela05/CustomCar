@@ -1,11 +1,13 @@
 package com.company.CustomCar.Dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -24,9 +26,9 @@ public class Orders {
     private String completionDate;
 
     // Joining the Inventory class to place orders.
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "inventoryId")
-    private Inventory inventory;
+    @OneToMany(mappedBy = "inventoryId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonIgnore
+    private Set<Inventory> inventory;
 
     // Use the Date & Calender Java Util. for Start date and Completion date.
 
@@ -63,11 +65,4 @@ public class Orders {
         this.completionDate = completionDate;
     }
 
-    public Inventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(Inventory inventory) {
-        this.inventory = inventory;
-    }
 }
