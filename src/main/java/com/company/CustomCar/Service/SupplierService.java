@@ -29,4 +29,7 @@ public class SupplierService {
     public void deleteSupplier(Integer id){
         supplierRepo.deleteById(id);
     }
+    public List<Supplier> getSupplierByName(String name){
+        return supplierRepo.findByName(name);
+    }
 }

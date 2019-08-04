@@ -2,6 +2,7 @@ package com.company.CustomCar.Dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Inventory {
     // Joining Inventory to Orders Class.
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "orderId", updatable = false, insertable = false)
+
 
 
     // Getter and Setter

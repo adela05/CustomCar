@@ -16,6 +16,13 @@ public class InventoryService {
     @Autowired
     ItemsRepository itemsRepo;
 
+
+
+    public Inventory addInventory(Inventory inventory){
+        inventoryRepo.save(inventory);
+        return inventory;
+    }
+
     public void updateInventory(Inventory inventory, Integer id){
         if(inventory.getInventoryId() == id){
             inventoryRepo.save(inventory);
@@ -24,9 +31,9 @@ public class InventoryService {
     public List<Inventory> getAllInventory(){
         return inventoryRepo.findAll();
     }
+
     public Inventory getInventoryById(Integer id){
         return inventoryRepo.getOne(id);
     }
-
 
 }
