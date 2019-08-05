@@ -34,4 +34,9 @@ public class InventoryController {
         inventoryService.deleteByStatus();
     }
 
+    // This route will display the low inventory
+    @GetMapping(value = "/inventory/quantity")
+    public List<Inventory> getLowInventory(){
+       return inventoryService.getLowInventory();
+    }
 }

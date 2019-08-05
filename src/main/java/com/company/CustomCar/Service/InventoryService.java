@@ -24,6 +24,7 @@ public class InventoryService {
     public void addQuantity(Integer qty){
         ++qty;
     }
+
     // Updating items in inventory
     public void updateInventory(Inventory inventory, Integer id){
         if(inventory.getInventoryId()==id){
@@ -52,7 +53,7 @@ public class InventoryService {
     }
 
     // Searching for Low Inventory that is less than qty 50.
-    public Inventory getLowInventory(Integer quantity){
+    public List<Inventory> getLowInventory(){
         List<Inventory> lowInventory = new ArrayList<>();
         List<Inventory> itemsList = inventoryRepo.findAll();
         for(int i = 0; i < itemsList.size(); i++){
@@ -60,7 +61,7 @@ public class InventoryService {
               lowInventory.add(itemsList.get(i));
             }
         }
-        return getLowInventory(quantity);
+        return lowInventory;
     }
 
 }

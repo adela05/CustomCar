@@ -24,13 +24,13 @@ public class Orders {
     @NotEmpty
     @Length(max = 11)
     private String completionDate;
+    @NotNull
+    private Integer inventoryId;
 
     // Joining the Inventory class to place orders.
     @OneToMany(mappedBy = "inventoryId", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Inventory> inventory;
-
-    // Use the Date & Calender Java Util. for Start date and Completion date.
 
     // Getter and Setter
     public Integer getOrderId() {
@@ -65,4 +65,19 @@ public class Orders {
         this.completionDate = completionDate;
     }
 
+    public Integer getInventoryId() {
+        return inventoryId;
+    }
+
+    public void setInventoryId(Integer inventoryId) {
+        this.inventoryId = inventoryId;
+    }
+
+    public Set<Inventory> getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Set<Inventory> inventory) {
+        this.inventory = inventory;
+    }
 }

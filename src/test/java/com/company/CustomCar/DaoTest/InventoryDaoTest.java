@@ -51,9 +51,5 @@ public class InventoryDaoTest {
         assertNotNull(item1.getInventoryId());
         assertNotNull(item2.getInventoryId());
     }
-    @Test
-    @Transactional
-    public void shouldUpdateInventory(){
 
-    }
 }
