@@ -18,12 +18,13 @@ public class InventoryController {
         return inventoryService.getAllInventory();
     }
 
+    // Adds new items in inventory.
     @RequestMapping(value = "/inventory", method = RequestMethod.POST)
     public Inventory addInventory(@RequestBody @Valid Inventory inventory){
         inventoryService.addInventory(inventory);
         return inventory;
     }
-
+    // Updates types of items in the inventory.
     @RequestMapping(value = "/inventory/{id}", method = RequestMethod.PUT)
     public void updateInventory(@RequestBody Inventory inventory, @PathVariable Integer id){
         inventoryService.updateInventory(inventory, id);
