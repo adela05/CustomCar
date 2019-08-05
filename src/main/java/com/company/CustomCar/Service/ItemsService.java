@@ -34,4 +34,5 @@ public class ItemsService {
     public List<Items> findByPartType(String name){
         return itemsRepo.findAll();
     }
+
 }

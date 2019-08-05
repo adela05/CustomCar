@@ -22,7 +22,6 @@ public class Items {
     private Double price;
     private Integer supplierId;
 
-
     // Getter and Setter
     public Integer getItemId() {
         return itemId;
@@ -63,4 +62,6 @@ public class Items {
     public void setSupplierId(Integer supplierId) {
         this.supplierId = supplierId;
     }
+
+
 }

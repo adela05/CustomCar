@@ -30,4 +30,9 @@ public class SupplierController {
     public void deleteSupplier(@PathVariable Integer id){
         supplierService.deleteSupplier(id);
     }
+
+    @GetMapping(value = "/suppliers/{name}")
+    public List<Supplier> getSupplierByName(String name){
+        return supplierService.getSupplierByName(name);
+    }
 }

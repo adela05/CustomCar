@@ -1,8 +1,6 @@
 package com.company.CustomCar.Dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.cache.spi.support.AbstractReadWriteAccess;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
@@ -19,12 +17,22 @@ public class Inventory {
     @NotEmpty
     @Length(max = 15)
     private String status;
+    @NotNull
     private Integer itemId;
+    @NotEmpty
+    private String partType;
+    @NotNull
+    private Integer quantity;
+    @NotNull
+    private Double price;
+    @NotEmpty
+    @Length(max = 30)
+    private String vendorName;
+
 
     // Joining Inventory to Orders Class.
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "orderId", updatable = false, insertable = false)
-
 
 
     // Getter and Setter
@@ -48,7 +56,39 @@ public class Inventory {
         return itemId;
     }
 
-    public void setItems(Integer items) {
+    public void setItemId(Integer itemId) {
         this.itemId = itemId;
+    }
+
+    public String getPartType() {
+        return partType;
+    }
+
+    public void setPartType(String partType) {
+        this.partType = partType;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public String getVendorName() {
+        return vendorName;
+    }
+
+    public void setVendorName(String vendorName) {
+        this.vendorName = vendorName;
     }
 }
