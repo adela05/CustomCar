@@ -1,6 +1,5 @@
 package com.company.CustomCar.Controller;
 
-import com.company.CustomCar.Dto.Items;
 import com.company.CustomCar.Dto.Supplier;
 import com.company.CustomCar.Service.SupplierService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,12 @@ import java.util.List;
 public class SupplierController {
     @Autowired
     private SupplierService supplierService;
+
+    @RequestMapping(value = "/suppliers", method = RequestMethod.POST)
+    public Supplier addSupplier(@RequestBody @Valid Supplier supplier){
+        supplierService.addSupplier(supplier);
+        return supplier;
+    }
 
     @RequestMapping(value = "/suppliers/{id}", method = RequestMethod.PUT)
     public void updateSupplier(@RequestBody Supplier supplier, @PathVariable Integer id){
